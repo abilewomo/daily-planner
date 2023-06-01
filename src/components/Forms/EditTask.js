@@ -1,8 +1,11 @@
 import { getTask, editTask } from "../../utilities/tasksApi"
 import { useState, useEffect } from "react"
+import {useNavigate, useParams} from 'react-router-dom'
 
-export default function EditTask({onClose, id}){
+export default function EditTask(){
     const [task, setTask] = useState({})
+    const {id} = useParams()
+    const nav = useNavigate()
 
     useEffect(()=>{
         fetchTask(id)
@@ -19,7 +22,7 @@ export default function EditTask({onClose, id}){
     const handleSubmit = (e) => {
         e.preventDefault()//
         const updatedTask = {task: e.target.task.value}
-        editTask(id, updatedTask).then( ()=> onClose() )
+        editTask(id, updatedTask).then( ()=>  nav(`/${id}`) )
     }
     
     
@@ -29,7 +32,7 @@ return(
             <label htmlFor="task">Task:</label>
                 <textarea name="task" id="task" defaultValue={task.task}></textarea>
             </div>
-            <input className="button" type='submit'/> <button className="button" onClick={onClose}>Cancel</button> 
+            <input className="button" type='submit'/> 
         </form>
     )
 }

@@ -3,7 +3,6 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
 import Modal from '../components/Modal'
 import { getTasks } from '../utilities/tasksApi';
-import { Edit2 } from 'react-feather';
 import { Link } from 'react-router-dom';
 
 export default function HomePage(){
