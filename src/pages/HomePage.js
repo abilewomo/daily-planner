@@ -3,12 +3,13 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
 import Modal from '../components/Modal'
 import { getTasks } from '../utilities/tasksApi';
+import { Edit2 } from 'react-feather';
+import { Link } from 'react-router-dom';
 
 export default function HomePage(){
     const [value, onChange] = useState(new Date())
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [tasks, setTasks] = useState([])
-    const defaultMonth = new Date().getMonth()
 
    useEffect(() => {
     fetchTasks(value.getMonth());
@@ -35,13 +36,13 @@ export default function HomePage(){
     
     function tileContent({ date, view }) {
             const taskElements = tasks.map((task, i) => (
-             <div key={i}>{
+             <Link to={`/${task._id}`} key={i}>{
                 date == task.taskDate ? task.task : null
-                
-                
-             } </div>
+             }<br/>
+             </Link>
             ));
-            return <p>{taskElements}</p>;
+            return <div>{taskElements}
+            </div>;
 
 
     }

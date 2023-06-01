@@ -7,7 +7,7 @@ export default function Modal({ month, date, isOpen, onClose }){
         return (
           <div className="modal">
             <div className="modal-content">
-              <h1>{`${date}`}</h1>
+              <h1>Enter A New Task</h1>
               <CreateTask month={month} date={date} onClose={onClose}/>
             </div>
           </div>
