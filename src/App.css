@@ -21,7 +21,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.modal h2 {
+.modal h1 {
   font-size: 24px;
   margin-bottom: 10px;
 }
@@ -30,8 +30,7 @@
   font-size: 16px;
   margin-bottom: 20px;
 }
-
-.modal button {
+.button {
   background-color: #007bff;
   color: white;
   border: none;
@@ -40,6 +39,24 @@
   cursor: pointer;
 }
 
-.modal button:hover {
+.button:hover {
   background-color: #0056b3;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
