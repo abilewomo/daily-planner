@@ -12,16 +12,16 @@ Click on the link to view the app (https://daily-planner-b9xy.onrender.com)
 
 ### User Stories
 
-*I can create a task 
-*I can view all tasks for each day of the month.
-*I can edit a task 
-*I can view a task 
+* I can create a task 
+* I can view all tasks for each day of the month.
+* I can edit a task 
+* I can view a task 
 
 ### Technologies and Tools used
-*React.js
-*Axios
-*Express
-*MongoDB
-*reac-calendar
-*Mongoose
-*Node
+* React.js
+* Axios
+*  Express
+* MongoDB
+* reac-calendar
+* Mongoose
+* Node

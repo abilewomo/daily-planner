@@ -39,7 +39,7 @@ export default function HomePage(){
                 date == task.taskDate ? task.task : null
              }<br/>
              </Link>
-            ));
+            ))
             return <div>{taskElements}
             </div>;
 
