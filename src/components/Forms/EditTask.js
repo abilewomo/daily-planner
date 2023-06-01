@@ -3,17 +3,21 @@ import { useState, useEffect } from "react"
 import {useNavigate, useParams} from 'react-router-dom'
 
 export default function EditTask(){
-    const [task, setTask] = useState({})
-    const {id} = useParams()
+    const [theTask, setTheTask] = useState([])
+   
+    const params = useParams() 
+    const id = params.id
+    //console.log(id)
     const nav = useNavigate()
 
     useEffect(()=>{
         fetchTask(id)
-    })
+    },[])
     const fetchTask = async (id) => {
         try {
           const response = await getTask(id)
-          setTask(response.data)
+          setTheTask(response.data)
+          console.log(theTask)
         } catch (error) {
           console.log('Error fetching task:', error)
         }
@@ -30,7 +34,7 @@ return(
         <form onSubmit={handleSubmit}>
             <div className="form-group">
             <label htmlFor="task">Task:</label>
-                <textarea name="task" id="task" defaultValue={task.task}></textarea>
+                <input type="text" name="task" id="task" defaultValue={theTask.task} />
             </div>
             <input className="button" type='submit'/> 
         </form>

@@ -35,7 +35,7 @@ export default function HomePage(){
     
     function tileContent({ date, view }) {
             const taskElements = tasks.map((task, i) => (
-             <Link to={`/${task._id}`} key={i}>{
+             <Link to={`/${task._id}/edit`} key={i}>{
                 date == task.taskDate ? task.task : null
              }<br/>
              </Link>

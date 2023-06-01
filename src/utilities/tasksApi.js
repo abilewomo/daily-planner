@@ -9,7 +9,7 @@ export const getTasks = (date) =>{
 }
 
 export const getTask = (id) =>{
-    const URL = `${baseURL}/${id}`
+    const URL = `${baseURL}/task/${id}`
     const response = axios.get(URL)
     return response
 }
