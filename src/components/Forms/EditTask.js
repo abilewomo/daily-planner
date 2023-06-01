@@ -7,7 +7,6 @@ export default function EditTask(){
    
     const params = useParams() 
     const id = params.id
-    //console.log(id)
     const nav = useNavigate()
 
     useEffect(()=>{
@@ -17,7 +16,6 @@ export default function EditTask(){
         try {
           const response = await getTask(id)
           setTheTask(response.data)
-          console.log(theTask)
         } catch (error) {
           console.log('Error fetching task:', error)
         }
@@ -26,17 +24,18 @@ export default function EditTask(){
     const handleSubmit = (e) => {
         e.preventDefault()//
         const updatedTask = {task: e.target.task.value}
-        editTask(id, updatedTask).then( ()=>  nav(`/${id}`) )
+        editTask(id, updatedTask).then( ()=>  nav(`/`) )
     }
     
     
 return(
         <form onSubmit={handleSubmit}>
-            <div className="form-group">
+            <div className="edit-form">
             <label htmlFor="task">Task:</label>
-                <input type="text" name="task" id="task" defaultValue={theTask.task} />
-            </div>
+                <textarea name="task" id="task" defaultValue={theTask.task} /> <br />
             <input className="button" type='submit'/> 
+            </div>
+           
         </form>
     )
 }
