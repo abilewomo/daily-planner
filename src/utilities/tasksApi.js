@@ -1,6 +1,6 @@
 import axios from 'axios'
-const baseURL = 'http://localhost:3001'
-//const baseURL = 'https://daily-planner-app.onrender.com'
+//const baseURL = 'http://localhost:3001'
+const baseURL = 'https://daily-planner-app.onrender.com'
 
 export const getTasks = (date) =>{
     const URL = `${baseURL}/${date}`
