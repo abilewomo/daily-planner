@@ -7,7 +7,23 @@ import { getTasks } from '../utilities/tasksApi';
 export default function HomePage(){
     const [value, onChange] = useState(new Date())
     const [isModalOpen, setIsModalOpen] = useState(false)
-   // const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState([])
+    const defaultMonth = new Date().getMonth()
+
+   useEffect(() => {
+    fetchTasks(value.getMonth());
+  }, [value])
+
+  const fetchTasks = async (month) => {
+    try {
+      const response = await getTasks(month);
+      setTasks(response.data)
+    } catch (error) {
+      console.log('Error fetching tasks:', error);
+    }
+  }
+
+
     const openModal = () => {
         setIsModalOpen(true);
       }
@@ -16,17 +32,17 @@ export default function HomePage(){
         setIsModalOpen(false);
       }
     
+    
     function tileContent({ date, view }) {
-        const tasks =  getTasks(date).then((res)=>{
-            console.log(res.data)
-        })
-        const theTask = async ()=>{
-            const a = await tasks
-            return a
-        }   
-       //console.log(theTask())
-        
-        return view === 'month' && date.getDay() === 0 ? <p>It's Sunday!</p> : null
+            const taskElements = tasks.map((task, i) => (
+             <div key={i}>{
+                date == task.taskDate ? task.task : null
+                
+                
+             } </div>
+            ));
+            return <p>{taskElements}</p>;
+
 
     }
     
@@ -34,7 +50,7 @@ export default function HomePage(){
     return(
         <div>
             <Calendar  onClickDay={openModal} className="calendar" onChange={onChange} value={value} tileContent= {tileContent}  />
-            <Modal form="CreateTask" date={value}  isOpen={isModalOpen} onClose={closeModal} />
+            <Modal form="CreateTask" month = {value.getMonth()} date={value}  isOpen={isModalOpen} onClose={closeModal} />
         </div>
     )
 }
